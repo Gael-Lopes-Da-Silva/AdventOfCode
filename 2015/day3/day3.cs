@@ -24,7 +24,7 @@ void Part1()
         else if (character == '^') y++;
         else if (character == 'v') y--;
 
-        for (int i = 1; i < 9000; i++)
+        for (int i = 1; i < roadMape.GetLength(0); i++)
         {
             if (roadMape[i,0] == x && roadMape[i,1] == y)
             {
@@ -75,7 +75,7 @@ void Part2()
             else if (character == 'v') y1--;
         }
 
-        for (int i = 1; i < 9000; i++)
+        for (int i = 1; i < roadMape.GetLength(0); i++)
         {
             if (roadMape[i,0] == x1 && roadMape[i,1] == y1)
             {
