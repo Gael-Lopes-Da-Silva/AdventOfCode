@@ -6,45 +6,44 @@
 @day: https://adventofcode.com/2015/day/4
 */
 
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 
-void Part1()
+namespace AdventOfCode._2015;
+
+class Day4
 {
-    int index = 0;
-
-    while (true)
+    public static void Part1()
     {
-        MD5 md5 = MD5.Create();
-        string key = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes($"iwrupvqb{index}"))).Replace("-", "");
-        
-        if (key[0] == '0' && key[1] == '0' && key[2] == '0' && key[3] == '0' && key[4] == '0') break;
-        
-        index++;
+        int index = 0;
+
+        while (true)
+        {
+            MD5 md5 = MD5.Create();
+            string key = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes($"iwrupvqb{index}"))).Replace("-", "");
+
+            if (key[0] == '0' && key[1] == '0' && key[2] == '0' && key[3] == '0' && key[4] == '0') break;
+
+            index++;
+        }
+
+        Console.WriteLine($"Part1: {index}");
     }
 
-    Console.WriteLine($"Part1: {index}");
-}
-
-void Part2()
-{
-    int index = 0;
-
-    while (true)
+    public static void Part2()
     {
-        MD5 md5 = MD5.Create();
-        string key = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes($"iwrupvqb{index}"))).Replace("-", "");
-        
-        if (key[0] == '0' && key[1] == '0' && key[2] == '0' && key[3] == '0' && key[4] == '0' && key[5] == '0') break;
-        
-        index++;
+        int index = 0;
+
+        while (true)
+        {
+            MD5 md5 = MD5.Create();
+            string key = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes($"iwrupvqb{index}"))).Replace("-", "");
+
+            if (key[0] == '0' && key[1] == '0' && key[2] == '0' && key[3] == '0' && key[4] == '0' && key[5] == '0') break;
+
+            index++;
+        }
+
+        Console.WriteLine($"Part2: {index}");
     }
-
-    Console.WriteLine($"Part2: {index}");
 }
-
-void Main()
-{
-    Part1();
-    Part2();
-} Main();

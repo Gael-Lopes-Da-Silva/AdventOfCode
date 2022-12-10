@@ -1,4 +1,4 @@
-Faerun to Norrath = 129
+﻿Faerun to Norrath = 129
 Faerun to Tristram = 58
 Faerun to AlphaCentauri = 13
 Faerun to Arbre = 24

@@ -1,4 +1,4 @@
-NOT dq -> dr
+﻿NOT dq -> dr
 kg OR kf -> kh
 ep OR eo -> eq
 44430 -> b

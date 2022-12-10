@@ -6,42 +6,41 @@
 @day: https://adventofcode.com/2015/day/2
 */
 
-void Part1()
+namespace AdventOfCode._2015;
+
+class Day2
 {
-    string[] input = File.ReadAllLines("./input.txt");
-    int count = 0;
-
-    foreach (string line in input)
+    public static void Part1()
     {
-        int[] values = Array.ConvertAll(line.Split('x'), x => int.Parse(x));;
+        string[] input = File.ReadAllLines("../../../2015/Day2/input.txt");
+        int count = 0;
 
-        Array.Sort(values);
-        count += 2*values[0]*values[1] + 2*values[1]*values[2] + 2*values[0]*values[2];
-        count += values[0] * values[1];
+        foreach (string line in input)
+        {
+            int[] values = Array.ConvertAll(line.Split('x'), x => int.Parse(x)); ;
+
+            Array.Sort(values);
+            count += 2 * values[0] * values[1] + 2 * values[1] * values[2] + 2 * values[0] * values[2];
+            count += values[0] * values[1];
+        }
+
+        Console.WriteLine($"Part1: {count}");
     }
 
-    Console.WriteLine($"Part1: {count}");
-}
-
-void Part2()
-{
-    string[] input = File.ReadAllLines("./input.txt");
-    int count = 0;
-
-    foreach (string line in input)
+    public static void Part2()
     {
-        int[] values = Array.ConvertAll(line.Split('x'), x => int.Parse(x));;
+        string[] input = File.ReadAllLines("../../../2015/Day2/input.txt");
+        int count = 0;
 
-        Array.Sort(values);
-        count += values[0] * values[1] * values[2];
-        count += values[0] + values[0] + values[1] + values[1];
+        foreach (string line in input)
+        {
+            int[] values = Array.ConvertAll(line.Split('x'), x => int.Parse(x)); ;
+
+            Array.Sort(values);
+            count += values[0] * values[1] * values[2];
+            count += values[0] + values[0] + values[1] + values[1];
+        }
+
+        Console.WriteLine($"Part2: {count}");
     }
-
-    Console.WriteLine($"Part2: {count}");
 }
-
-void Main()
-{
-    Part1();
-    Part2();
-} Main();

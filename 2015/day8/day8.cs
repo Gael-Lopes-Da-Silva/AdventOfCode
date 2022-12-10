@@ -1,101 +1,101 @@
-﻿void Part1()
+﻿/* 
+@author: Gael Lopes Da Silva
+@project: Advent Of Code
+@github: https://github.com/Gael-Lopes-Da-Silva/AdventOfCode
+@gitlab: https://gitlab.com/Gael-Lopes-Da-Silva/AdventOfCode
+@day: https://adventofcode.com/2015/day/8
+*/
+
+namespace AdventOfCode._2015;
+
+class Day8
 {
-    string input = File.ReadAllText("./input.txt");
-    int codeCharacters = 0;
-    int memoryCharacters = 0;
-    int count = 0;
-
-    foreach (char character in input)
+    public static void Part1()
     {
-        if (character == '\n') continue;
-        codeCharacters++;
-    }
-    
-    for (int i = 0; i < input.Length; i++)
-    {
-        if (input[i] == '\n') continue;
-        if (input[i] == '"') continue;
+        string input = File.ReadAllText("../../../2015/Day8/input.txt");
+        int codeCharacters = 0;
+        int memoryCharacters = 0;
 
-        if (input[i] == '\\')
+        foreach (char character in input)
         {
-            if (input[i+1] == '"')
+            if (character == '\n') continue;
+            codeCharacters++;
+        }
+
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == '\n') continue;
+            if (input[i] == '"') continue;
+
+            if (input[i] == '\\')
             {
-                i++;
-                memoryCharacters++;
+                if (input[i + 1] == '"')
+                {
+                    i++;
+                    memoryCharacters++;
+                }
+                else if (input[i + 1] == '\\')
+                {
+                    i++;
+                    memoryCharacters++;
+                }
+                else if (input[i + 1] == 'x')
+                {
+                    i += 3;
+                    memoryCharacters++;
+                }
             }
-            else if (input[i+1] == '\\') 
+            else
             {
-                i++;
-                memoryCharacters++;
-            }
-            else if (input[i+1] == 'x')
-            {
-                i += 3;
                 memoryCharacters++;
             }
         }
-        else
-        {
-            memoryCharacters++;
-        }
+
+        Console.WriteLine($"Part1: {codeCharacters} - {memoryCharacters} = {codeCharacters - memoryCharacters}");
     }
 
-    count = codeCharacters - memoryCharacters;
-
-    Console.WriteLine($"Part1: {codeCharacters} - {memoryCharacters} = {count}");
-}
-
-void Part2()
-{
-    string input = File.ReadAllText("./input.txt");
-    int encodedCodeCharacters = 0;
-    int codeCharacters = 0;
-    int count = 0;
-
-    foreach (char character in input)
+    public static void Part2()
     {
-        if (character == '\n') continue;
-        encodedCodeCharacters++;
-    }
+        string input = File.ReadAllText("../../../2015/Day8/input.txt");
+        int encodedCodeCharacters = 0;
 
-    codeCharacters = encodedCodeCharacters;
-    
-    for (int i = 0; i < input.Length; i++)
-    {
-        if (input[i] == '\n') continue;
-        if (input[i] == '"')
+        foreach (char character in input)
         {
-            encodedCodeCharacters += 2;
-            continue;
+            if (character == '\n') continue;
+            encodedCodeCharacters++;
         }
 
-        if (input[i] == '\\')
+        int codeCharacters = encodedCodeCharacters;
+
+        for (int i = 0; i < input.Length; i++)
         {
-            if (input[i+1] == '"')
+            if (input[i] == '\n') continue;
+            if (input[i] == '"')
             {
-                i++;
                 encodedCodeCharacters += 2;
+                continue;
             }
-            else if (input[i+1] == '\\') 
+
+            if (input[i] == '\\')
             {
-                i++;
-                encodedCodeCharacters += 2;
-            }
-            else if (input[i+1] == 'x')
-            {
-                i += 3;
-                encodedCodeCharacters++;
+                if (input[i + 1] == '"')
+                {
+                    i++;
+                    encodedCodeCharacters += 2;
+                }
+                else if (input[i + 1] == '\\')
+                {
+                    i++;
+                    encodedCodeCharacters += 2;
+                }
+                else if (input[i + 1] == 'x')
+                {
+                    i += 3;
+                    encodedCodeCharacters++;
+                }
             }
         }
+
+        Console.WriteLine($"Part2: {encodedCodeCharacters} - {codeCharacters} = {encodedCodeCharacters - codeCharacters}");
     }
-
-    count = encodedCodeCharacters - codeCharacters;
-
-    Console.WriteLine($"Part2: {encodedCodeCharacters} - {codeCharacters} = {count}");
 }
-
-void Main()
-{
-    Part1();
-    Part2();
-} Main();
